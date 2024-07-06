@@ -12,6 +12,13 @@ header {
     text-align: center;
 }
 
+footer {
+    background-color: #45a1ff;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+  }
+
 nav {
     background: #444;
 }

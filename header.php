@@ -12,6 +12,7 @@
     </header>
     <nav>
         <ul>
+            <li><a href="index.php">Accueil</a></li>
             <li><a href="membres.php">Membres</a></li>
             <li><a href="entraineurs.php">Entraîneurs</a></li>
             <li><a href="competitions.php">Compétitions</a></li>
@@ -20,12 +21,3 @@
         </ul>
     </nav>
     <div class="container">
-        <h2>Bienvenue sur la page de gestion du club de tennis</h2>
-        <p>Utilisez la navigation pour gérer les différents aspects de votre club.</p>
-    </div>
-    <footer>
-        <p>2024 FM - Github: https://github.com/MesguenF/tennisclub.git</p>
-    </footer>
-</body>
-
-</html>

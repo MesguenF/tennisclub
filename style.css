@@ -1,153 +1,151 @@
+/* Global Styles: Définit des styles de base pour le corps, les conteneurs, et les titres.*/
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-}
-
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 1rem;
-    text-align: center;
-}
-
-footer {
-    background-color: #45a1ff;
-    color: #fff;
-    padding: 1rem;
-    text-align: center;
-  }
-
-nav {
-    background: #444;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-nav ul li {
-    margin: 0.5rem;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    background-color: #555;
-    border-radius: 5px;
-}
-
-nav ul li a:hover {
-    background-color: #666;
+    box-sizing: border-box;
 }
 
 .container {
     width: 90%;
-    margin: auto;
-    overflow: hidden;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-h1, h2 {
-    color: #333;
+h2 {
+    text-align: center;
+    margin-top: 20px;
 }
 
-form {
-    background: #fff;
-    padding: 1rem;
-    margin-bottom: 2rem;
-    border-radius: 5px;
-    box-shadow: 0 0 10px #ccc;
-}
-
-form input[type="text"],
-form input[type="email"],
-form input[type="date"],
-form input[type="number"],
-form select,
-form textarea {
-    width: 100%;
-    padding: 0.5rem;
-    margin: 0.5rem 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
-
-form input[type="submit"] {
-    background: #333;
+/* Header Styles : Définit les styles pour le header, y compris les liens de navigation. */
+header {
+    background-color: #333;
     color: white;
-    border: 0;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
+    padding: 10px 0;
+    text-align: center;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    display: inline-block;
+}
+
+header nav a:hover {
+    background-color: #575757;
+}
+
+/* Footer Styles : Définit les styles pour le footer, le rendant toujours au bas de la page. */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
     width: 100%;
+    margin-top: 20px;
 }
 
-form input[type="submit"]:hover {
-    background: #555;
-}
-
+/* Table Styles : Définit les styles pour les tableaux, y compris les bordures, les espacements, et les couleurs de fond. */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 2rem;
+    margin-top: 20px;
 }
 
 table, th, td {
-    border: 1px solid #ccc;
+    border: 1px solid #ddd;
 }
 
 th, td {
-    padding: 0.5rem;
+    padding: 8px;
     text-align: left;
 }
 
 th {
-    background: #f4f4f4;
+    background-color: #f2f2f2;
 }
 
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Form Styles : Définit les styles pour les formulaires, y compris les labels, les champs de texte, et les boutons. */
+form {
+    margin-top: 20px;
+}
+
+form label {
+    display: block;
+    margin: 5px 0;
+}
+
+form input[type="text"],
+form input[type="date"],
+form input[type="email"],
+form input[type="submit"],
+form textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+form input[type="checkbox"] {
+    width: auto;
+}
+
+/* Responsive Styles : Définit les styles pour rendre les tableaux, les formulaires, et la navigation responsive, en s'adaptant aux écrans plus petits. */
 @media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        align-items: center;
+    header nav a {
+        display: block;
+        padding: 10px 0;
     }
-
-    form input[type="submit"] {
-        width: auto;
-    }
-
+    
     table, th, td {
         display: block;
+        width: 100%;
     }
 
     th, td {
-        padding: 0.5rem 1rem;
+        text-align: right;
+        padding-left: 50%;
     }
 
-    th {
-        display: none;
+    th::before, td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 10px;
+        text-align: left;
+        font-weight: bold;
     }
 
-    td {
+    tr {
+        margin-bottom: 10px;
+        display: block;
+    }
+    
+    th, td {
         border: none;
         position: relative;
         padding-left: 50%;
     }
 
-    td::before {
-        content: attr(data-label);
-        position: absolute;
-        left: 0;
-        width: 50%;
-        padding-left: 1rem;
-        font-weight: bold;
-        text-align: left;
-        background: #f4f4f4;
+    th::before, td::before {
+        padding: 8px;
+    }
+
+    form label, form input, form textarea {
+        width: 100%;
+        margin: 10px 0;
     }
 }

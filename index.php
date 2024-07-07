@@ -1,6 +1,7 @@
 <?php include 'header.php'; ?>
 
-<h2>Bienvenue sur la page de gestion du club de tennis</h2>
-<p>Utilisez la navigation pour gérer les différents aspects de votre club.</p>
+    <div class="text-center p-3 bg-white text-black">
+        <h2 style= text-align: center; margin-top: 20px;>Bienvenue sur la page de gestion du club de tennis</h2>
+    </div>
 
 <?php include 'footer.php'; ?>

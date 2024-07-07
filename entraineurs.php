@@ -17,9 +17,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     VALUES ('$nom', '$prenom', '$date_naissance', '$adresse', '$email', '$telephone', '$specialite')";
 
     if ($db->query($sql) === TRUE) {
-        echo "Nouvel entraîneur ajouté avec succès";
+        echo "<div class='alert alert-success'>Nouvel entraîneur ajouté avec succès</div>";
     } else {
-        echo "Erreur: " . $sql . "<br>" . $db->conn->error;
+        echo "<div class='alert alert-danger'>Erreur: " . $sql . "<br>" . $db->conn->error . "</div>";
     }
 }
 
@@ -27,63 +27,76 @@ $sql = "SELECT * FROM Entraineurs";
 $result = $db->query($sql);
 ?>
 
-<h2>Ajouter un Nouvel Entraîneur</h2>
-<form method="post" action="entraineurs.php">
-    <label for="nom">Nom:</label>
-    <input type="text" id="nom" name="nom" required>
+<div class="container">
+    <h2>Ajouter un Nouvel Entraîneur</h2>
+    <form method="post" action="entraineurs.php">
+        <div class="form-group">
+            <label for="nom">Nom:</label>
+            <input type="text" class="form-control" id="nom" name="nom" required>
+        </div>
+        <div class="form-group">
+            <label for="prenom">Prénom:</label>
+            <input type="text" class="form-control" id="prenom" name="prenom" required>
+        </div>
+        <div class="form-group">
+            <label for="date_naissance">Date de Naissance:</label>
+            <input type="date" class="form-control" id="date_naissance" name="date_naissance" required>
+        </div>
+        <div class="form-group">
+            <label for="adresse">Adresse:</label>
+            <input type="text" class="form-control" id="adresse" name="adresse">
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email">
+        </div>
+        <div class="form-group">
+            <label for="telephone">Téléphone:</label>
+            <input type="text" class="form-control" id="telephone" name="telephone">
+        </div>
+        <div class="form-group">
+            <label for="specialite">Spécialité:</label>
+            <input type="text" class="form-control" id="specialite" name="specialite">
+        </div>
+        <button type="submit" class="btn btn-primary">Ajouter Entraîneur</button>
+    </form>
 
-    <label for="prenom">Prénom:</label>
-    <input type="text" id="prenom" name="prenom" required>
-
-    <label for="date_naissance">Date de Naissance:</label>
-    <input type="date" id="date_naissance" name="date_naissance" required>
-
-    <label for="adresse">Adresse:</label>
-    <input type="text" id="adresse" name="adresse">
-
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email">
-
-    <label for="telephone">Téléphone:</label>
-    <input type="text" id="telephone" name="telephone">
-
-    <label for="specialite">Spécialité:</label>
-    <input type="text" id="specialite" name="specialite">
-
-    <input type="submit" value="Ajouter Entraîneur">
-</form>
-
-<h2>Liste des Entraîneurs</h2>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Nom</th>
-        <th>Prénom</th>
-        <th>Date de Naissance</th>
-        <th>Adresse</th>
-        <th>Email</th>
-        <th>Téléphone</th>
-        <th>Spécialité</th>
-    </tr>
-    <?php
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            echo "<tr>
-                <td data-label='ID'>{$row['entraineur_id']}</td>
-                <td data-label='Nom'>{$row['nom']}</td>
-                <td data-label='Prénom'>{$row['prenom']}</td>
-                <td data-label='Date de Naissance'>{$row['date_naissance']}</td>
-                <td data-label='Adresse'>{$row['adresse']}</td>
-                <td data-label='Email'>{$row['email']}</td>
-                <td data-label='Téléphone'>{$row['telephone']}</td>
-                <td data-label='Spécialité'>{$row['specialite']}</td>
-            </tr>";
-        }
-    } else {
-        echo "<tr><td colspan='8'>Aucun entraîneur trouvé</td></tr>";
-    }
-    ?>
-</table>
+    <h2>Liste des Entraîneurs</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Date de Naissance</th>
+                <th>Adresse</th>
+                <th>Email</th>
+                <th>Téléphone</th>
+                <th>Spécialité</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                    echo "<tr>
+                        <td data-label='ID'>{$row['entraineur_id']}</td>
+                        <td data-label='Nom'>{$row['nom']}</td>
+                        <td data-label='Prénom'>{$row['prenom']}</td>
+                        <td data-label='Date de Naissance'>{$row['date_naissance']}</td>
+                        <td data-label='Adresse'>{$row['adresse']}</td>
+                        <td data-label='Email'>{$row['email']}</td>
+                        <td data-label='Téléphone'>{$row['telephone']}</td>
+                        <td data-label='Spécialité'>{$row['specialite']}</td>
+                    </tr>";
+                }
+            } else {
+                echo "<tr><td colspan='8'>Aucun entraîneur trouvé</td></tr>";
+            }
+            ?>
+        </tbody>
+    </table>
+</div>
 
 <?php
 $db->close();

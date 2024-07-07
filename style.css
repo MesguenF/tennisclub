@@ -19,8 +19,8 @@ h2 {
 
 /* Header Styles : Définit les styles pour le header, y compris les liens de navigation. */
 header {
-    background-color: #333;
-    color: white;
+    background-color: #a36666;
+    color: rgb(5, 0, 0);
     padding: 10px 0;
     text-align: center;
 }
